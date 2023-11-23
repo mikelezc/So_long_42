@@ -3,6 +3,7 @@
 23 noviembre 2023
 
 -Comienzo este proyecto:
+
 -Algunos vídeos interesantes para aprender a manejar minilibx
 
 	https://www.youtube.com/watch?v=9eAPbNUQD1Y (Como dibujar un Pollock).
