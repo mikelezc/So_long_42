@@ -12,3 +12,8 @@
 24 noviembre 2023
 
 -Hago el Makefile de libft integrando ft_printf y gnl
+
+25 noviembre 2023
+
+-Hago sprites .xpm 
+-Corrijo Makefile (barra de carga)
