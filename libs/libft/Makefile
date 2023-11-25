@@ -6,7 +6,7 @@
 #    By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 17:33:48 by mlezcano          #+#    #+#              #
-#    Updated: 2023/11/24 17:44:48 by mlezcano         ###   ########.fr        #
+#    Updated: 2023/11/25 11:51:12 by mlezcano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,25 @@
 
 SHELL		=	/bin/bash
 
-#Standard
+#compiler
 
-NAME		=	libft.a
-INCLUDE		=	inc/
-SRC_DIR 	=	src/
-OBJ_DIR		=	obj/
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -I
 RM			=	rm -f
 AR			=	ar rcs
 ECHO		=	echo -e
 
-#Colors
+#directories
+
+INCLUDE		=	inc/
+SRC_DIR 	=	src/
+OBJ_DIR		=	obj/
+
+#output 
+
+NAME		=	libft.a
+
+#colors
 
 DEF_COLOR	=	\033[0;39m
 ORANGE		=	\033[0;33m
@@ -39,9 +45,14 @@ MAGENTA		=	\033[0;95m
 CYAN		=	\033[0;96m
 WHITE		=	\033[0;97m
 
-#Sources
+#src directories
 
 LIBFT_DIR	=	libft/
+GNL_DIR		=	gnl/
+FTPRINTF_DIR	= ft_printf/
+
+#src files
+
 LIBFT		=	ft_bzero ft_isalnum ft_isalpha ft_isascii \
 	   		  ft_isdigit ft_isprint ft_memcpy ft_memmove \
 	  		  ft_memset ft_strlen ft_tolower ft_toupper \
@@ -54,37 +65,39 @@ LIBFT		=	ft_bzero ft_isalnum ft_isalpha ft_isascii \
 			  ft_lstlast_bonus ft_lstadd_back_bonus ft_lstdelone_bonus \
 			  ft_lstclear_bonus ft_lstiter_bonus ft_lstmap_bonus
 
-GNL_DIR		=	gnl/
 GNL			=	get_next_line get_next_line_utils
 
-FTPRINTF_DIR	= ft_printf/
 FTPRINTF	=	ft_printf ft_alpha ft_numeric
 
-SRC_FILES+=$(addprefix $(LIBFT_DIR),$(LIBFT))
-SRC_FILES+=$(addprefix $(GNL_DIR),$(GNL))
-SRC_FILES+=$(addprefix $(FTPRINTF_DIR),$(FTPRINTF))
+#src files combination 
+
+SRC_FILES	= 	$(addprefix $(LIBFT_DIR),$(LIBFT)) \
+				$(addprefix $(GNL_DIR),$(GNL)) \
+				$(addprefix $(FTPRINTF_DIR),$(FTPRINTF))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-###
+#Cache flag 
 
 OBJF		=	.cache_exists
 
+#Target list
+
 start:
-			@echo -e -n "$(YELLOW)[LIBFT]:\t$(DEF_COLOR)"
-			@echo -e -n "$(RED)[$(DEF_COLOR)"
+			@echo -e -n "$(DEF_COLOR)[LIBFT]:\t$(DEF_COLOR)"
+			@echo -e -n "$(WHITE)[$(DEF_COLOR)"
 			@make all
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			@$(AR) $(NAME) $(OBJ)
-			@echo -e -n "$(RED)]$(DEF_COLOR)"
-			@$(ECHO) "$(GREEN) => 100%$(DEF_COLOR)"
+			@echo -e -n "$(WHITE)]$(DEF_COLOR)"
+			@$(ECHO) "$(GREEN) => OK!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
-			@echo -e -n "$(ORANGE)=$(DEF_COLOR)"
+			@echo -e -n "$(WHITE)=$(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(OBJF):
@@ -97,16 +110,15 @@ $(OBJF):
 clean:
 			@$(RM) -r $(OBJ_DIR)
 			@$(RM) $(OBJF)
-			@echo -e -n "$(BLUE)[LIBFT]:\tobject files$(DEF_COLOR)$(GREEN)  => Cleaned!$(DEF_COLOR)\n"
+			@echo -e -n "$(RED)[LIBFT]:\tobject files$(DEF_COLOR)$(YELLOW)  => Clean$(DEF_COLOR)\n"
 
 fclean:		clean
 			@$(RM) $(NAME)
-			@echo -e -n "$(CYAN)[LIBFT]:\texec. files$(DEF_COLOR)$(GREEN)  => Cleaned!$(DEF_COLOR)\n"
+			@echo -e -n "$(RED)[LIBFT]:\texec. files$(DEF_COLOR)$(YELLOW)  => Clean$(DEF_COLOR)\n"
 
 re:			fclean all
 			@echo -e -n "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)\n"
 
-norm:
-			@norminette $(SRC) $(INCLUDE) | grep -v Norme -B1 || true
+#phony rules
 
-.PHONY:		all clean fclean re norm
+.PHONY:		all clean fclean re 
