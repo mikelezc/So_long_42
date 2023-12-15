@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 13:44:30 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 13:41:45 by mlezcano         ###   ########.fr       */
+/*   Created: 2023/12/04 18:38:29 by mlezcano          #+#    #+#             */
+/*   Updated: 2023/12/14 18:31:43 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../lib/libft/inc/libft.h"
 # include "../lib/minilibx/mlx.h"
@@ -49,25 +49,25 @@ typedef struct s_game
 	int		itinerary_perso_y;
 }	t_game;
 
-//so_long
+//so_long_bonus
 void		ft_is_valid_arguments(int argc, char **argv);
 void		ft_set_struct(t_game *game);
 void		ft_map_ok(char **argv, t_game *game);
 void		ft_window(t_game *game);
 
-//map_ok
+//map_ok_bonus
 char		*ft_read_map(int fd);
 int			ft_is_null(char *line);
 char		*ft_line_constructor(char	*line, char c);
 void		ft_check_items(char *buffer, t_game *game);
 void		ft_check_map_is_square(char *buffer, t_game *game);
 
-//check_limits
+//check_limits_bonus
 void		ft_check_x_limits(t_game *game);
 void		ft_check_y_limits(t_game *game);
 void		ft_limits_error(void);
 
-//itinerary_ok
+//itinerary_ok_bonus
 int			ft_itinerary_ok(t_game *game);
 int			ft_position_player(t_game *game, char **map);
 void		itinerary_c(t_game *game, char **map, int x, int y);
@@ -80,7 +80,7 @@ int			ft_total_collect(t_game *game);
 void		ft_fill_floor(t_game *game);
 int			ft_close_window(t_game *game);
 
-//window_fill
+//window_fill_bonus
 void		ft_put_limits(t_game *game);
 void		ft_put_floor(t_game *game);
 void		ft_put_collect(t_game *game);
@@ -94,7 +94,12 @@ void		ft_move_down(t_game *game);
 void		ft_move_left(t_game *game);
 void		ft_move_right(t_game *game);
 
-//utils
+//extra_bonus
+void		ft_mov_display(t_game *game);
+void		ft_put_enemy(t_game *game);
+void		ft_enemy(int keyhook, t_game *game);
+
+//utils_bonus
 void		valid_ber(char *map_name, char *ext);
 void		free_2_array(char **arr);
 void		printer(char *msg);
