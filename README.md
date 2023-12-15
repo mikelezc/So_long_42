@@ -17,3 +17,8 @@
 
 -Hago sprites .xpm 
 -Corrijo Makefile (barra de carga)
+
+15 diciembre 2023
+
+-Han pasado varios días sin actualizar este readme pero ya tengo el juego funcionando sin leaks de memoria tanto la parte bonus como la no bonus
+-Solo me queda corregir un par de cosas de la parte bonus y ya tengo el proyecto para presentar
