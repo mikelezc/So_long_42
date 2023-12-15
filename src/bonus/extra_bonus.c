@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:46:07 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 18:30:27 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:44:30 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_mov_display(t_game *game)
 {
-	char *mov_str = ft_itoa(game->pl_mov);
+	char	*mov_str;
 
+	mov_str = ft_itoa(game->pl_mov);
 	if (mov_str == NULL)
 		return ;
 	mlx_string_put(game->mlx, game->mlx_win,

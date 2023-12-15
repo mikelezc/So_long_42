@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:44:30 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 13:41:45 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:52:04 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void		ft_limits_error(void);
 
 //itinerary_ok
 int			ft_itinerary_ok(t_game *game);
-int			ft_position_player(t_game *game, char **map);
-void		itinerary_c(t_game *game, char **map, int x, int y);
-void		itinerary_e(t_game *game, char **map, int x, int y);
+int			ft_anyone_there(t_game *game, char **map);
+void		iti_collects(t_game *game, char **map, int x, int y);
+void		iti_exit(t_game *game, char **map, int x, int y);
 void		ft_copy_map(t_game *game, char **map);
 
 //window
@@ -95,7 +95,7 @@ void		ft_move_left(t_game *game);
 void		ft_move_right(t_game *game);
 
 //utils
-void		valid_ber(char *map_name, char *ext);
+void		ft_valid_ber(char *map_name, char *ext);
 void		free_2_array(char **arr);
 void		printer(char *msg);
 #endif

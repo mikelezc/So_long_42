@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:41:12 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 18:07:09 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:48:41 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,8 @@ void	ft_is_valid_arguments(int argc, char **argv)
 	valid_ber(argv[1], ".ber");
 }
 
-void myleaks()
-{
-	system("leaks -q so_long");
-}
-
 int	main(int argc, char **argv)
 {
-	//only for test propuse
-	atexit(myleaks);
 	t_game	game;
 
 	ft_is_valid_arguments(argc, argv);

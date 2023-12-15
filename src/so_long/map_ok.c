@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:41:12 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 16:35:55 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:14:00 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ void	ft_check_map_is_square(char *buffer, t_game *game)
 	ft_check_y_limits(game);
 }
 
-void	ft_check_items(char *buffer, t_game *game)
+void	ft_check_items(char *linemap, t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (buffer[i])
+	while (linemap[i])
 	{
-		if (buffer[i] == 'P')
+		if (linemap[i] == 'P')
 			game->player++;
-		if (buffer[i] == 'C')
+		if (linemap[i] == 'C')
 			game->collect++;
-		if (buffer[i] == 'E')
+		if (linemap[i] == 'E')
 			game->exit++;
-		if (buffer[i] == '\n')
+		if (linemap[i] == '\n')
 			game->map_y++;
 		i++;
 	}
@@ -49,7 +49,7 @@ void	ft_check_items(char *buffer, t_game *game)
 	}
 }
 
-char	*ft_line_constructor(char *line, char c)
+char	*ft_line_constructor(char *line, char new_char)
 {
 	int		i;
 	char	*str;
@@ -66,7 +66,7 @@ char	*ft_line_constructor(char *line, char c)
 		str[i] = line[i];
 		i++;
 	}
-	str[i] = c;
+	str[i] = new_char;
 	str[i + 1] = '\0';
 	free(line);
 	return (str);
@@ -90,7 +90,7 @@ int	ft_is_null(char *line)
 
 char	*ft_read_map(int fd)
 {
-	char	buffer;
+	char	new_char;
 	char	*line;
 	int		rd_bytes;
 
@@ -103,7 +103,7 @@ char	*ft_read_map(int fd)
 	line[0] = '\0';
 	while (!ft_is_null(line) && rd_bytes > 0)
 	{
-		rd_bytes = read(fd, &buffer, 1);
+		rd_bytes = read(fd, &new_char, 1);
 		if ((rd_bytes == 0 && line[0] == '\0') || rd_bytes < 0)
 		{
 			ft_printf("Error\nThis map is empty!\n");
@@ -112,7 +112,7 @@ char	*ft_read_map(int fd)
 		}
 		if (rd_bytes == 0 && line[0] != '\0')
 			return (line);
-		line = ft_line_constructor(line, buffer);
+		line = ft_line_constructor(line, new_char);
 	}
 	return (line);
 }

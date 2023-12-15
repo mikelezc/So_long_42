@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:39:17 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 17:06:29 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:51:47 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_map_ok(char **argv, t_game *game)
 {
 	int		i;
 	int		fd;
-	char	*buffer;
+	char	*linemap;
 
 	fd = open(argv[1], O_RDONLY);
 	i = 0;
@@ -35,16 +35,16 @@ void	ft_map_ok(char **argv, t_game *game)
 		ft_printf("Error, can't open file.\n");
 		exit (1);
 	}
-	buffer = ft_read_map(fd);
-	ft_check_items(buffer, game);
-	game->map = ft_split(buffer, '\n');
-	free(buffer);
+	linemap = ft_read_map(fd);
+	ft_check_items(linemap, game);
+	game->map = ft_split(linemap, '\n');
+	free(linemap);
 	while (game->map[0][i] != '\0')
 	{
 		game->map_x++;
 		i++;
 	}
-	ft_check_map_is_square(buffer, game);
+	ft_check_map_is_square(linemap, game);
 	close(fd);
 }
 
@@ -77,7 +77,7 @@ void	ft_is_valid_arguments(int argc, char **argv)
 		ft_printf("Please, insert the map name after the executable file.\n");
 		exit(1);
 	}
-	valid_ber(argv[1], ".ber");
+	ft_valid_ber(argv[1], ".ber");
 }
 
 void myleaks()
