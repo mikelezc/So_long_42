@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:53:27 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/15 12:42:34 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:57:13 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	ft_copy_map(t_game *game, char **map)
 	while (i < game->map_y)
 	{
 		map[i] = (char *)malloc(sizeof(char) * (game->map_x + 1));
+		if (!map[i])
+			err_exit();
 		i++;
 	}
 	i = 0;
@@ -101,6 +103,8 @@ int	ft_itinerary_ok(t_game *game)
 
 	line = 0;
 	map = (char **)malloc(sizeof(char *) * (game->map_y + 1));
+	if (!map)
+		err_exit();
 	ft_copy_map(game, map);
 	if (!ft_anyone_there(game, map))
 		return (free_2_array(map), 0);

@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:46:17 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 13:51:40 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:18:27 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_fill_floor(t_game *game)
 		{
 			game->file = mlx_xpm_file_to_image(game->mlx,
 					"./xpm/background.xpm", &game->pxl, &game->pxl);
+			if (!game->file)
+				err_exit();
 			mlx_put_image_to_window (game->mlx, game->mlx_win,
 				game->file, game->pxl * game->x,
 				game->pxl * game->y);

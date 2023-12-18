@@ -6,13 +6,13 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:07:44 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 18:25:39 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/17 20:03:49 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	valid_ber(char *map_name, char *ext)
+void	ft_valid_ber(char *map_name, char *ext)
 {
 	int	i;
 	int	j;
@@ -50,4 +50,10 @@ void	printer(char *msg)
 {
 	ft_printf(msg);
 	ft_printf("\n");
+}
+
+void	err_exit(void)
+{
+	ft_printf("Error.\n");
+	exit(1);
 }

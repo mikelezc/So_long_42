@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:07:44 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/15 12:51:35 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/17 20:04:15 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,10 @@ void	printer(char *msg)
 {
 	ft_printf(msg);
 	ft_printf("\n");
+}
+
+void	err_exit(void)
+{
+	ft_printf("Error.\n");
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 13:44:30 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/15 12:52:04 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/17 20:04:05 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void		ft_move_right(t_game *game);
 void		ft_valid_ber(char *map_name, char *ext);
 void		free_2_array(char **arr);
 void		printer(char *msg);
+void		err_exit(void);
 #endif

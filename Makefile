@@ -6,7 +6,7 @@
 #    By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 18:52:37 by mlezcano          #+#    #+#              #
-#    Updated: 2023/12/15 12:46:45 by mlezcano         ###   ########.fr        #
+#    Updated: 2023/12/17 19:48:20 by mlezcano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SHELL		=	/bin/bash
 #compiler
 
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra #-fsanitize=address -g3
+CFLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address -g3
 RM			= rm -f
 ECHO		= echo -e
 MINILIBXCC	= -I mlx -L lib/minilibx -lmlx

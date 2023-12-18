@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:41:12 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/15 10:48:41 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/18 10:57:02 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,28 @@ void	ft_map_ok(char **argv, t_game *game)
 {
 	int		i;
 	int		fd;
-	char	*buffer;
+	char	*linemap;
 
 	fd = open(argv[1], O_RDONLY);
 	i = 0;
 	if (fd == -1)
 	{
+		close(fd);
 		ft_printf("Error, can't open file.\n");
 		exit (1);
 	}
-	buffer = ft_read_map(fd);
-	ft_check_items(buffer, game);
-	game->map = ft_split(buffer, '\n');
-	free(buffer);
+	linemap = ft_read_map(fd);
+	game->map = ft_split(linemap, '\n');
+	if (!linemap || !game->map)
+		err_exit();
+	ft_check_items(linemap, game);
 	while (game->map[0][i] != '\0')
 	{
 		game->map_x++;
 		i++;
 	}
-	ft_check_map_is_square(buffer, game);
+	ft_check_map_is_square(linemap, game);
+	free(linemap);
 	close(fd);
 }
 
@@ -77,7 +80,7 @@ void	ft_is_valid_arguments(int argc, char **argv)
 		ft_printf("Please, insert the map name after the executable file\n");
 		exit(1);
 	}
-	valid_ber(argv[1], ".ber");
+	ft_valid_ber(argv[1], ".ber");
 }
 
 int	main(int argc, char **argv)
@@ -93,6 +96,5 @@ int	main(int argc, char **argv)
 	mlx_hook(game.mlx_win, 2, 1L << 0, ft_keyboard, &game);
 	mlx_hook(game.mlx_win, 17, 1L << 5, ft_close_window, &game);
 	mlx_loop(game.mlx);
-	exit(0);
 	return (0);
 }

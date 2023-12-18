@@ -6,15 +6,15 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:41:12 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/15 11:14:00 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:41:58 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_check_map_is_square(char *buffer, t_game *game)
+void	ft_check_map_is_square(char *linemap, t_game *game)
 {
-	game->map_area = ft_strlen(buffer) - game->map_y + 1;
+	game->map_area = ft_strlen(linemap) - game->map_y + 1;
 	if (game->map_area != game->map_x * game->map_y)
 	{
 		ft_printf("Error!\nThe map has a wrong layout.\n");
@@ -55,11 +55,13 @@ char	*ft_line_constructor(char *line, char new_char)
 	char	*str;
 
 	i = 0;
+	if (!line)
+		err_exit();
 	while (line[i])
 		i++;
 	str = malloc(i + 2);
 	if (str == NULL)
-		return (NULL);
+		err_exit();
 	i = 0;
 	while (line[i])
 	{
@@ -98,8 +100,8 @@ char	*ft_read_map(int fd)
 	if (fd < 0)
 		line = NULL;
 	line = malloc(1);
-	if (line == NULL)
-		return (NULL);
+	if (!line)
+		err_exit();
 	line[0] = '\0';
 	while (!ft_is_null(line) && rd_bytes > 0)
 	{

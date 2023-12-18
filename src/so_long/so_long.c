@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:39:17 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/15 12:51:47 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:30:53 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,22 @@ void	ft_map_ok(char **argv, t_game *game)
 	i = 0;
 	if (fd == -1)
 	{
+		close(fd);
 		ft_printf("Error, can't open file.\n");
 		exit (1);
 	}
 	linemap = ft_read_map(fd);
-	ft_check_items(linemap, game);
 	game->map = ft_split(linemap, '\n');
-	free(linemap);
+	if (!linemap || !game->map)
+		err_exit();
+	ft_check_items(linemap, game);
 	while (game->map[0][i] != '\0')
 	{
 		game->map_x++;
 		i++;
 	}
 	ft_check_map_is_square(linemap, game);
+	free(linemap);
 	close(fd);
 }
 
@@ -100,6 +103,5 @@ int	main(int argc, char **argv)
 	mlx_hook(game.mlx_win, 2, 1L << 0, ft_keyboard, &game);
 	mlx_hook(game.mlx_win, 17, 1L << 5, ft_close_window, &game);
 	mlx_loop(game.mlx);
-	exit(0);
 	return (0);
 }

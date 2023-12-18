@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:38:29 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 18:31:43 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/17 20:04:08 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void		ft_limits_error(void);
 
 //itinerary_ok_bonus
 int			ft_itinerary_ok(t_game *game);
-int			ft_position_player(t_game *game, char **map);
-void		itinerary_c(t_game *game, char **map, int x, int y);
-void		itinerary_e(t_game *game, char **map, int x, int y);
+int			ft_anyone_there(t_game *game, char **map);
+void		iti_collects(t_game *game, char **map, int x, int y);
+void		iti_exit(t_game *game, char **map, int x, int y);
 void		ft_copy_map(t_game *game, char **map);
 
 //window
@@ -100,7 +100,8 @@ void		ft_put_enemy(t_game *game);
 void		ft_enemy(int keyhook, t_game *game);
 
 //utils_bonus
-void		valid_ber(char *map_name, char *ext);
+void		ft_valid_ber(char *map_name, char *ext);
 void		free_2_array(char **arr);
 void		printer(char *msg);
+void		err_exit(void);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlezcano <mlezcano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:42:57 by mlezcano          #+#    #+#             */
-/*   Updated: 2023/12/14 15:29:55 by mlezcano         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:43:32 by mlezcano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ void	ft_check_x_limits(t_game *game)
 			ft_limits_error();
 		game->x++;
 	}
+	if (game->x > 52)
+	{
+		ft_printf("Error!\nMap too wide to be enjoyable :(\n");
+		exit(1);
+	}
 }
 
 void	ft_check_y_limits(t_game *game)
@@ -53,5 +58,10 @@ void	ft_check_y_limits(t_game *game)
 		if (game->map[game->y][game->x] != '1')
 			ft_limits_error();
 		game->y++;
+	}
+	if (game->y > 26)
+	{
+		ft_printf("Error!\nMap too high to be enjoyable :(\n");
+		exit(1);
 	}
 }
